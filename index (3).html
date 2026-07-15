@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Minimalist 3D Multiplayer Movement</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.10.1/dist/nipplejs.min.js"></script>
+</head>
+<body>
+  <div id="menu-overlay">
+    <div id="sidebar">
+      <div id="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="white"/>
+          <path d="M10 20L20 10L30 20L20 30L10 20Z" fill="#333"/>
+        </svg>
+        <span>WEBSIM</span>
+      </div>
+      <nav>
+        <ul>
+          <li class="active"><a href="#" id="home-tab">🏠<span> Home</span></a></li>
+          <li><a href="#" id="create-tab">🎨<span> Create</span></a></li>
+          <li><a href="#">👤<span> Profile</span></a></li>
+          <li><a href="#">👕<span> Avatar</span></a></li>
+          <li><a href="#">💬<span> Messages</span></a></li>
+        </ul>
+      </nav>
+      <div id="user-profile">
+        <img id="user-avatar" src="https://images.websim.com/avatar/default" alt="User Avatar">
+        <span id="user-username">Player</span>
+      </div>
+    </div>
+    <div id="main-content">
+      <div id="header">
+        <h1 id="welcome-message">Welcome back, <span id="welcome-username">Player</span>!</h1>
+        <input type="text" placeholder="Search experiences..." id="search-bar">
+      </div>
+      <div id="experiences-section">
+        <h2>Recommended For You</h2>
+        <div id="experiences-grid">
+          <!-- experiences will be rendered here by app.js -->
+        </div>
+        <div id="server-list-container">
+          <h2>Servers</h2>
+          <ul id="server-list"></ul>
+        </div>
+      </div>
+    </div>
+    <div id="studio-content" style="display: none;">
+      <div id="studio-header">
+        <h1>My Creations</h1>
+        <button id="create-new-experience-button">+ Create New</button>
+      </div>
+      <div id="creations-section">
+        <h2>Your Experiences</h2>
+        <div id="creations-grid">
+          <!-- User's creations will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Studio editor modal -->
+      <div id="studio-editor" class="hidden" role="dialog" aria-modal="true" aria-labelledby="studio-editor-title">
+        <div id="studio-editor-inner">
+          <header>
+            <h2 id="studio-editor-title">Create New Experience</h2>
+            <button id="studio-close" title="Close">✕</button>
+          </header>
+          <main>
+            <label for="studio-title">Title</label>
+            <input id="studio-title" type="text" placeholder="Untitled Experience" maxlength="80">
+
+            <label for="studio-desc">Description</label>
+            <textarea id="studio-desc" rows="4" placeholder="Short description..."></textarea>
+
+            <div id="studio-actions">
+              <button id="studio-create" class="primary">Create</button>
+              <button id="studio-cancel">Cancel</button>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="game-container">
+    <div class="crosshair"></div>
+    <div id="ui-container">
+      <div id="health-bar-container">
+        <div id="health-bar"></div>
+      </div>
+      <div id="crosshair" class="hidden">+</div>
+      <div id="score-display">Score: 0</div>
+      <div id="leaderboard">
+        <h3>Leaderboard</h3>
+        <ul id="leaderboard-list">
+          <!-- Player scores will be dynamically inserted here -->
+        </ul>
+      </div>
+      <button id="exit-button" title="Exit to Menu">EXIT</button>
+    </div>
+    <div id="inventory-bar">
+      <!-- Inventory slots will be generated here by ui.js -->
+    </div>
+    <div id="chat-log-container">
+      <ul id="chat-log-list"></ul>
+    </div>
+  </div>
+  <div id="joystick-container"></div>
+  <div id="jump-button">JUMP</div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
